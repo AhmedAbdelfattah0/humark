@@ -1,0 +1,319 @@
+//>>>>> Contact Section Start <<<<<//
+.contact-section {
+    .dot-shape {
+        position: absolute;
+        top: 15%;
+        left: 4%;
+        animation: rounded 5s linear infinite;
+        @include breakpoint(max-xxxl){
+            left: 0;
+        }
+        @include breakpoint(max-xxl){
+            display: none;
+        }
+    }
+    .frame-shape {
+        position: absolute;
+        bottom: 20%;
+        left: 4%;
+         animation: rounded 5s linear infinite;
+        @include breakpoint(max-xl){
+            display: none;
+        }
+    }
+    .frame-shape-2 {
+        position: absolute;
+        top: 40%;
+        right: 4%;
+         animation: rounded 5s linear infinite;
+        @include breakpoint(max-xl){
+            display: none;
+        }
+    }
+}
+
+.single-contact-us {
+    position: relative;
+    z-index: 9;
+
+    .contact-info-item  {
+        margin-top: 30px;
+        gap: 20px;
+        padding: 30px 35px;
+        border-left: 3px solid $theme-color;
+        background-color: #DF0A0A0D;
+        max-width: 430px;
+        @include breakpoint(max-sm){
+            padding: 20px 25px;
+        }
+        &:not(:last-child){
+            margin-bottom: 30px;
+        }
+        i{
+            font-size: 30px;
+            color: $theme-color;
+        }
+        .content{
+            h3{
+                font-weight: 600;
+                text-transform: initial;
+                @include breakpoint(max-sm){
+                   font-size: 20px;
+                }
+            }
+        }
+    }
+
+    .contact-image {
+        margin-top: 10px;
+        img{
+            @include imgw;
+        }
+        @include breakpoint(max-xl){
+            margin-top: 40px;
+        }
+    }
+}
+
+.solar-contact-section {
+    position: relative;
+    .map-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        @include breakpoint (max-lg){
+            display: none;
+        }
+        .google-map{
+            iframe{
+                width: 860px;
+                height: 840px;
+                @include breakpoint (max-xxl){
+                    width: 550px;
+                    height: 950px;
+                }
+                @include breakpoint (max-xl){
+                    width: 465px;
+                    height: 835px;
+                }
+            }
+        }
+    }
+}
+
+.contact-right{
+    .form-clt{
+        position: relative;
+        .icon{
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 35px;
+            height: 35px;
+            line-height: 32px;
+            border-radius: 50%;
+            background-color: $white;
+            box-shadow: 0px 10px 20px 0px rgba(34, 34, 34, 0.08);
+            text-align: center;
+            @include breakpoint(max-sm){
+               top: 15px;
+            }
+            i{
+                color: $header-color;
+                font-size: 14px;
+            }
+        }
+        input{
+            width: 100%;
+            outline: none;
+            border: none;
+            padding: 20px 25px;
+            color: $header-color;
+            background-color: rgb(245, 245, 245);
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 10px;
+            @include transition;
+            @include breakpoint(max-lg){
+                font-size: 15px;
+            }
+            @include breakpoint(max-sm){
+                font-size: 14px;
+                padding: 15px 20px;
+            }
+            &:hover{
+                background-color: $header-color;
+                color: $white;
+                &::placeholder{
+                    color: $white;
+                }
+            }
+        }
+    }
+    .form-clt-big{
+        textarea{
+            padding: 20px 25px 105px;
+            width: 100%;
+            outline: none;
+            color: $header-color;
+            background-color: rgb(245, 245, 245);
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            border-radius: 10px;
+            @include transition;
+            @include breakpoint(max-xl){
+                font-size: 15px;
+            }
+            &:hover{
+                background-color: $header-color;
+                color: $white;
+                &::placeholder{
+                    color: $white;
+                }
+            }
+         }
+    }
+}
+//>>>>> Contact Section End <<<<<//
+
+//>>>>> Contact Support Start <<<<<//
+.support-wrapper{
+    padding: 40px 30px;
+    @include justify;
+    @include breakpoint(max-xl){
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    @include breakpoint(max-sm){
+        justify-content: center;
+    }
+    .support-items{
+        display: flex;
+        gap: 30px;
+        @include breakpoint(max-sm){
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .icon{
+            width: 120px;
+            height: 120px;
+            line-height: 120px;
+            background-color: var(--white);
+            border-radius: 100%;
+            box-shadow: (0px 4px 60px rgba(0, 0, 0, 0.02));
+            text-align: center;
+            @include breakpoint(max-lg){
+                width: 100px;
+                height: 100px;
+                line-height: 100px;
+            }
+            @include breakpoint(max-sm){
+                width: 95px;
+                height: 95px;
+                line-height: 95px;
+                text-align: center;
+                margin: 0 auto;
+            }
+        }
+        .content{
+            @include breakpoint(max-sm){
+                text-align: center;
+                margin: 0 auto;
+            }
+            span{
+                font-weight: 600;
+                color: var(--theme);
+                position: relative;
+            }
+            h3{
+                @include titlefont;
+                @include breakpoint(max-lg){
+                    font-size: 24px;
+                }
+                @include breakpoint(max-sm){
+                    font-size: 22px;
+                }
+                span{
+                    font-size: 30px;
+                    font-style: italic;
+                    font-weight: 400;
+                    color: var(--black);
+                    @include breakpoint(max-lg){
+                        font-size: 24px;
+                    }
+                    @include breakpoint(max-sm){
+                        font-size: 22px;
+                    }
+                }
+            }
+        }
+    }
+    .icon-box{
+        width: 55px;
+        height: 55px;
+        line-height: 55px;
+        border-radius: 100%;
+        background-color: var(--theme);
+        color: var(--white);
+        text-align: center;
+    }
+}
+//>>>>> Contact Support End <<<<<//
+
+//>>>>> Contact Info Start <<<<<//
+.contact-info-wrapper{
+    .contact-image{
+        img{
+            border-radius: 10px;
+        }
+    }
+    .info-right{
+        margin-left: 40px;
+        .contact-list{
+            margin-top: 50px;
+            .icon-item{
+                display: flex;
+                gap: 20px;
+                @include breakpoint(max-sm){
+                    flex-wrap: wrap;
+                }
+                &:not(:last-child){
+                    margin-bottom: 30px;
+                }
+                .icon{
+                    width: 50px;
+                    height: 50px;
+                    line-height: 50px;
+                    background-color: var(--theme);
+                    border-radius: 100%;
+                    text-align: center;
+                    color: var(--white);
+                    @include breakpoint(max-sm){
+                        width: 40px;
+                        height: 40px;
+                        line-height: 40px;
+                    }
+                }
+                .content{
+                    h4{
+                       text-transform: initial;
+                    }
+                }
+            }
+        }
+    }
+}
+//>>>>> Contact Info End <<<<<//
+
+//>>>>> Map Section Start <<<<<//
+.map-section{
+    .googpemap{
+        iframe{
+            width: 100%;
+            height: 850px;
+        }
+    }
+}
+//>>>>> Map Section End <<<<<//

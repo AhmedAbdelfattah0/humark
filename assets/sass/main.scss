@@ -1,0 +1,78 @@
+/*
+Theme Name: Keystone
+Author: Modina Theme
+Author URI: https://themeforest.net/user/modinatheme/
+Description: Multi-Purpose Business HTML5 Template
+Version: 1.0.0
+*/
+
+/*CSS Table Of Content Ends Here*/
+
+//>> Basic Start <<//
+
+//>> Mixins <<//
+@import "_mixins";
+//>> Variables <<//	
+@import "_variables";
+//>> Buttons <<//
+@import "_buttons";
+//>> Typography <<//
+@import "_typography";
+//>> Basic End <<//	
+
+
+//>> Template Section Style Start <<//
+
+//>> Preloader <<//
+@import "_preloader";
+//>> Section <<//
+@import "_section";
+//>> Animation <<//
+@import "_animation";
+//>> Header <<//
+@import "_header";
+//>> MeanMenu <<//
+@import "_meanmenu";
+//>> Banner <<//
+@import "_hero";
+//>> Feature <<//
+@import "_feature";
+//>> About <<//
+@import "_about";
+//>> Service <<//
+@import "_service";
+//>> Helping <<//
+@import "_helping";
+//>> _project <<//
+@import "_project";
+//>> Counter <<//
+@import "_counter";
+//>> Team <<//
+@import "_team";
+//>> Choose <<//
+@import "_choose";
+//>> Testimonial <<//
+@import "_testimonial";
+//>> Brand <<//
+@import "_brand";
+//>> Faq <<//
+@import "_faq";
+//>> News Addons <<//
+@import "_news-addons";
+//>> Blog index defult style <<//
+@import "_blog";
+//>> Cta <<//
+@import "_cta";
+//>> Pricing <<//
+@import "_pricing";
+//>> App <<//
+@import "_app";
+//>> Case Study <<//
+@import "_case-study";
+//>> Contact <<//
+@import "_contact";
+//>> Footer <<//
+@import "_footer";
+
+//>> Template Section Style End <<//
+

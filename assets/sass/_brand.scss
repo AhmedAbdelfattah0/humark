@@ -1,0 +1,98 @@
+//>>>>> Brand Section Start <<<<<//
+.brand-section{
+    .arrow-shape{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+.single-brand-style-1{
+    h6{
+        font-weight: 700;
+        text-align: center;
+        position: relative;
+        margin-bottom: 60px;
+        &::before{
+            position: absolute;
+            top: 10px;
+            left: 35px;
+            content: "";
+            height: 2px;
+            width: 480px;
+            background-color: $theme-color;
+            @include breakpoint(max-xxxl){
+                width: 450px;
+            }
+             @include breakpoint(max-xxl){
+                width: 325px;
+            }
+            @include breakpoint(max-lg){
+                width: 200px;
+            }
+            @include breakpoint(max-md){
+                display: none;
+            }
+        }
+        &::after{
+            position: absolute;
+            top: 10px;
+            right: 35px;
+            content: "";
+            height: 2px;
+            width: 480px;
+            background-color: $theme-color;
+            @include breakpoint(max-xxxl){
+                width: 450px;
+            }
+            @include breakpoint(max-xxl){
+                width: 325px;
+            }
+            @include breakpoint(max-lg){
+                width: 200px;
+            }
+            @include breakpoint(max-md){
+                display: none;
+            }
+        }
+    }
+
+    .brand-logo{
+        text-align: center;
+    }
+
+    &.it-single-brand-style{
+        h6{
+           &::before,&::after{
+            background-color: $theme-color-2;
+           }
+        }
+    }
+}
+
+.solar-brand {
+    position: relative;
+    &::before {
+        position: absolute;
+        bottom: -50%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+        background-color: $theme-color-4;
+        z-index: -1;
+    }
+}
+
+.solar-brand-wrapper {
+    padding: 60px 50px;
+    background-color: $white;
+    box-shadow: 0px -30px 60px 0px rgba(0, 0, 0, 0.04);
+    border-radius: 10px;
+    .brand-image {
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+//>>>>> Brand Section End <<<<<//

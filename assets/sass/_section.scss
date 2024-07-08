@@ -1,0 +1,306 @@
+
+
+
+//>>>>> Section Title Start <<<<<//
+.sub-title {
+	color: $white;
+	margin-bottom: 35px;
+	text-align: center;
+	@include breakpoint(max-xl){
+        margin-bottom: 20px;
+    }
+	@include breakpoint(max-lg){
+        margin-bottom: 15px;
+    }
+}
+
+.section-title{
+	max-width: 800px;
+	text-align: center;
+	margin: 0 auto 30px;
+	position: relative;
+	z-index: 99;
+	margin-top: -6px;
+	span{
+		color: $theme-color;
+		margin-bottom: 8px;
+		display: inline-block;
+		font-size: 22px;
+		font-weight: 700;
+		&.color-style-2{
+			color: $theme-color-2;
+		}
+		@include breakpoint(max-sm){
+			font-size: 20px;
+		}
+	}
+
+	h2 {
+
+		&.active {
+
+			position: relative;
+			overflow: hidden;
+			display: block;
+
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				background: $theme-color;
+				animation: a-ltr-after 2s cubic-bezier(.77,0,.18,1) forwards;
+				transform: translateX(-101%);
+			}
+		
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				background: $theme-color;
+				animation: a-ltr-before 2s cubic-bezier(.77,0,.18,1) forwards;
+				transform: translateX(0);
+		
+		
+			}
+		
+			&:nth-of-type(2)::before{
+				animation-delay: 1.5s;
+			}
+			&:nth-of-type(2)::after{
+				animation-delay: 1.5s;
+			}
+		}
+	}
+	.title{
+		color: $white;
+	}
+
+	@include breakpoint(max-lg){
+		margin: 0 auto 20px;
+	}
+	@include breakpoint(max-md){
+		margin: 0 auto 10px;
+	}
+
+	&.width-style{
+		max-width: 1080px;
+	}
+
+	&.section-style-3{
+		h2 {
+			margin-top: 5px;
+			font-family: $heading-font-2;
+			&.color-style-white{
+				color: $white;
+			}
+		}
+		span{
+			color: $theme-color-3;
+			font-weight: 600;
+			font-size: 18px;
+			text-transform: capitalize;
+            margin-bottom: 0;
+		}
+	}
+
+	&.solar-title {
+		.section-both {
+			margin-bottom: 15px;
+			span{
+				color: $theme-color-4;
+				font-weight: 600;
+				text-transform: uppercase;
+				font-size: 16px;
+				position: relative;
+				&::before {
+					position: absolute;
+					top: -5px;
+					left: -45px;
+					content: "";
+					border-radius: 50%;
+					width: 30px;
+					height: 30px;
+					background-color: transparent;
+					border: 2px solid $theme-color-4;
+				}
+				&::after {
+					position: absolute;
+					top: 5px;
+					left: -35px;
+					content: "";
+					border-radius: 50%;
+					width: 10px;
+					height: 10px;
+					background-color: transparent;
+					border: 2px solid $theme-color-4;
+				}
+			}
+		}
+		h2 {
+			color: $white;
+		}
+	}
+}
+
+.section-title-content{
+	margin-bottom: 30px;
+	position: relative;
+	z-index: 99;
+	margin-top: -6px;
+	@include breakpoint(max-xl){
+		margin-bottom: 20px;
+	}
+	@include breakpoint(max-sm){
+		margin-bottom: 15px;
+	}
+	span{
+		color: $theme-color;
+		font-size: 22px;
+		font-weight: 700;
+		display: inline-block;
+		margin-bottom: 10px;
+		&.color-style-2{
+			color: $theme-color-2;
+		}
+
+		&.text-white {
+			color: $white;
+			font-size: 22px;
+		    font-weight: 700;
+		}
+
+		@include breakpoint(max-sm){
+			font-size: 20px;
+		}
+	}
+
+	&.style-3 {
+		span{
+			font-weight: 600;
+			color: $theme-color-3;
+			font-size: 18px;
+			margin-bottom: 0;
+		}
+		h2{
+			font-family: $heading-font-2;
+			margin-top: 10px;
+		}
+	}
+
+	.section-both {
+		position: relative;
+		span{
+			margin-left: 40px;
+			color: $theme-color-4;
+			font-weight: 600;
+			text-transform: uppercase;
+			font-size: 16px;
+            display: inline-block;
+		}
+		&::before {
+			position: absolute;
+			top: -2px;
+			content: "";
+			border-radius: 50%;
+			width: 30px;
+			height: 30px;
+			background-color: transparent;
+			border: 2px solid $theme-color-4;
+		}
+		&::after {
+			position: absolute;
+			top: 8px;
+			left: 10px;
+			content: "";
+			border-radius: 50%;
+			width: 10px;
+			height: 10px;
+			background-color: transparent;
+			border: 2px solid $theme-color-4;
+		}
+	}
+}
+
+//>>>>> Basic Css Start <<<<<//
+
+.center {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.section-bg{
+	background-color: $bg-color;
+}
+
+.section-bg-2{
+	background-color: $bg-color-2;
+}
+
+.section-bg-3{
+	background-color: $bg-color-3;
+}
+
+.section-bg-4{
+	background-color: $bg-color-4;
+}
+
+.section-bg-5{
+	background: $bg-color-5;
+}
+
+.section-bg-6{
+	background: $bg-color-6;
+}
+
+.section-bg-7{
+	background: $theme-color-4;
+}
+
+.section-bg-8{
+	background: $bg-color-7;
+}
+
+.section-bg-9{
+	background: $bg-color-8;
+}
+
+.section-padding{
+	padding: 120px 0;
+
+	@include breakpoint(max-xl){
+		padding: 100px 0;
+	}
+	@include breakpoint(max-lg){
+		padding: 80px 0;
+	}
+}
+
+.section-padding-2{
+	padding: 90px 0;
+
+	@include breakpoint(max-xl){
+		padding: 70px 0;
+	}
+	@include breakpoint(max-lg){
+		padding: 50px 0;
+	}
+}
+//>>>>> Basic Css End <<<<<//
+
+
+
+@keyframes a-ltr-after{
+    0% {transform: translateX(-100%)}
+    100% {transform: translateX(101%)}
+}
+
+@keyframes a-ltr-before{
+    0% {transform: translateX(0)}
+    100% {transform: translateX(200%)}
+}

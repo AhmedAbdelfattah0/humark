@@ -1,0 +1,71 @@
+//>>>>> It Case Study Section Start <<<<<//
+.single-case-study-wrapper{
+    padding: 0 70px;
+    position: relative;
+    &::before{
+        position: absolute;
+        bottom: 50%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+        background-color: var(--bg3);
+    }
+    @include breakpoint(max-md){
+        padding: 0 0;
+    }
+}
+
+.single-it-case-study{
+    .case-study-image{
+        position: relative;
+        img{
+            @include imgw;
+        }
+        .case-study-content{
+            position: absolute;
+            bottom: 30px;
+            left: 40px;
+            right: 40px;
+            background-color: $white;
+            padding: 40px 50px;
+            @include breakpoint(max-sm){
+               bottom: 20px;
+               left: 20px;
+               right: 20px;
+               padding: 25px;
+            }
+            .arrow-shape{
+                position: absolute;
+                right: 0;
+                top: 0;
+                @include breakpoint(max-md){
+                    display: none;
+                }
+            }
+            .icon{
+                margin-bottom: 20px;
+                img{
+                    width: initial;
+                    height: initial;
+                }
+            }
+            h4{
+                a{
+                    &:hover{
+                        color: $theme-color-2;
+                    }
+                }
+            }
+            p{
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+//>>>>> It Case Study Section End <<<<<//
+
+
+
+

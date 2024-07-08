@@ -1,0 +1,221 @@
+//>>>>> Pricing Table Section Start <<<<<//
+.pricing-section{
+    position: relative;
+    .dot-shape{
+        position: absolute;
+        right: 0;
+        top: 0;
+        @include breakpoint(max-xl){
+            display: none;
+        }
+    }
+    .arrow-shape{
+        position: absolute;
+        left: 0;
+        top: 25%;
+        @include breakpoint(max-xxxl){
+            display: none;
+        }
+    }
+    .dot-shape-2{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        @include breakpoint(max-xl){
+            display: none;
+        }
+    }
+}
+
+.single-pricing-items {
+    padding: 50px 60px;
+    background-color: $white;
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+    &.active-tag {
+        position: relative;
+         &::before{
+            position: absolute;
+            content: "";
+            right: -68%;
+            top: 13px;
+            background-image: url(../../assets/img/pricing/tag.png);
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            @include breakpoint(max-xxl){
+                right: -63%;
+            }
+            @include breakpoint(max-xl){
+                right: -71%;
+            }
+            @include breakpoint(max-lg){
+                right: -81%;
+            }
+            @include breakpoint(max-md){
+                right: -76%;
+            }
+            @include breakpoint(max-sm){
+                top: 0;
+            }
+            @include breakpoint(max-xxsmall){
+                right: -70%;
+                top: 0;
+            }
+         }
+        
+     }
+    @include transition;
+    @include breakpoint(max-sm){
+        padding: 40px 30px;
+    }
+    .content{
+        margin-top: 20px;
+        h3{
+            margin-bottom: 5px;
+        }
+        @include breakpoint(max-sm){
+            margin-top: 15px;
+        }
+    }
+
+    .price-plan{
+        margin-top: 30px;
+        @include breakpoint(max-sm){
+            margin-bottom: 20px;
+        }
+        h2{
+            font-size: 60px;
+            font-weight: 600;
+            color: $theme-color-2;
+            @include breakpoint(max-sm){
+                font-size: 48px;
+            }
+            sub{
+                padding: 0;
+                margin: 0;
+                font-size: 16px;
+                color: $text-color;
+                bottom: 0;
+                margin-left: -10px;  
+            }
+        }
+    }
+
+    ul{
+        margin-top: 20px;
+        li{
+            font-weight: 500;
+            &:not(:last-child){
+                margin-bottom: 20px;
+            }
+        }
+        .icon{
+            color: $header-color;
+            i{
+                color: $theme-color-2;
+                margin-right: 15px;
+            }
+        }
+        .icon-2{
+            color: $text-color;
+            i{
+                color: $text-color;
+                margin-right: 15px;
+            }
+        }
+    }
+
+    &:hover{
+        transform: translateY(-10px);
+    }
+}
+
+//>>>>> Pricing Table Section End <<<<<//
+
+//>>>>> Payment Section Start <<<<<//
+.payment-section {
+    position: relative;
+    .vector-shape {
+        position: absolute;
+        top: 25%;
+        left: 20%;
+        @include breakpoint(max-xl){
+            display: none;
+        }
+    }
+}
+
+.bank-single-payment {
+    padding: 30px;
+    background-color: $white;
+    border-radius: 10px;
+    margin-top: 30px;
+    .icon-items {
+        @include flex;
+        gap: 15px;
+        border-bottom: 1px solid $border-color;
+        padding-bottom: 50px;
+        @include breakpoint(max-sm){
+            flex-wrap: wrap;
+            padding-bottom: 30px;
+            justify-content: center;
+            gap: 20px;
+        }
+        .icon {
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            border-radius: 10px;
+            background-color: $theme-color-3;
+            text-align: center;
+        }
+        .content {
+            h3{
+                font-family: $heading-font-2;
+            }
+        }
+    }
+    .card-item {
+        @include flex;
+        justify-content: center;
+        gap: 35px;
+        padding-top: 25px;
+        @include breakpoint(max-sm){
+            gap: 15px;
+        }
+    }
+
+    &.active{
+        background-color: $bg-color-6;
+        .icon-items {
+            border-bottom: 1px solid #EDEFF2;
+            .content {
+                h3,p {
+                    color: $white;
+                }
+            }
+        }
+        .logo-item {
+            padding-top: 25px;
+            @include flex;
+            justify-content: center;
+            gap: 80px;
+        }
+    }
+
+    .card-icon-item {
+        @include flex;
+        justify-content: center;
+        gap: 30px;
+        .card-icon {
+            padding-top: 25px;
+            gap: 10px;
+            p {
+                font-weight: 600;
+            }
+        }
+    }
+}
+//>>>>> Payment Section End <<<<<//
