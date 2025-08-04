@@ -1,0 +1,83 @@
+//>>>>> Mobile Section Start <<<<<//
+@use "variables" as *;
+@use "mixins" as *;
+@use "typography" as *;
+
+.mobile-app-wrapper {
+    .mobile-app-image {
+        position: relative;
+        @include breakpoint(max-sm){
+            text-align: center;
+        }
+        .app-image {
+            position: absolute;
+            right: 8%;
+            top: 25%;
+            animation: updown8 2s linear infinite;
+            @include breakpoint(max-xxxl){
+               top: 12%;
+               right: 4%;
+            }
+            @include breakpoint(max-xl){
+                right: -3%;
+                top: 20%;
+                width: 290px;
+                img {
+                    @include imgw;
+                }
+            }
+            @include breakpoint(max-lg){
+                right: 25%;
+            }
+            @include breakpoint(max-md){
+                right: 5%;
+                top: 15%;
+                width: 250px;
+            }
+            @include breakpoint(max-sm){
+                display: none;
+            }
+        }
+        .text-image {
+            position: absolute;
+            bottom: 0;
+            left: -30%;
+            animation: lfrt10 2s linear infinite;
+            @include breakpoint(max-xxxl){
+                left: -25%;
+            }
+            @include breakpoint(max-xl){
+                display: none;
+            }
+        }
+    }
+
+    .mobile-app-content {
+        margin-left: 25px;
+        ul {
+            margin-top: 30px;
+            li {
+                color: $header-color;
+                font-weight: 600;
+                &:not(:last-child){
+                    margin-bottom: 10px;
+                }
+                i {
+                    color: $theme-color-3;
+                    margin-right: 12px;
+                }
+            }
+        }
+
+        .app-store {
+            @include flex;
+            margin-top: 35px;
+            gap: 20px;
+            @include breakpoint(max-sm){
+                flex-wrap: wrap;
+                margin-top: 25px;
+            }
+        }
+    }
+}
+//>>>>> Mobile Section End <<<<<//

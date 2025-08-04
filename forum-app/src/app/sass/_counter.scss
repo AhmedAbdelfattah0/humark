@@ -1,0 +1,170 @@
+//>>>>> Counter Section Start <<<<<//
+.counter-wrapper{
+    position: relative;
+    &::before{
+        position: absolute;
+        top: 0;
+        left: 8%;
+        right: 8%;
+        bottom: 0;
+       // width: 100%;
+        height: 100%;
+        content: "";
+        background-color: rgba(13, 16, 26, 1);
+        z-index: 9;
+        @include breakpoint(max-xxxl){
+            left: 2%;
+            right: 2%;
+        }
+        @include breakpoint(max-xl){
+            left: 0;
+            right: 0;
+        }
+    }
+    &::after{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 47%;
+        content: "";
+        background-color: rgba(29, 32, 39, 1);
+    }
+    .arrow-shape{
+        position: absolute;
+        left: 8%;
+        bottom: 0;
+        z-index: 99;
+        @include breakpoint(max-xxxl){
+            left: 2%;
+        }
+        @include breakpoint(max-xl){
+            display: none;
+        }
+    }
+    .arrow-shape-2{
+        position: absolute;
+        left: 13%;
+        bottom: 0;
+        z-index: 99;
+        @include breakpoint(max-xxxl){
+            left: 10%;
+        }
+        @include breakpoint(max-xl){
+            display: none;
+        }
+    }
+    .arrow-shape-3{
+        position: absolute;
+        right: 8%;
+        top: 0;
+        z-index: 99;
+        @include breakpoint(max-xxxl){
+            right: 2%;
+        }
+        @include breakpoint(max-xl){
+            display: none;
+        }
+    }
+    .arrow-shape-4{
+        position: absolute;
+        right: 15%;
+        top: 0;
+        z-index: 99;
+        @include breakpoint(max-xl){
+            display: none;
+        }
+    }
+    .counter-main-items{
+        position: relative;
+        z-index: 99;
+        flex-wrap: wrap;
+        @include flex;
+        justify-content: space-between;
+        @include breakpoint(max-md){
+           justify-content: center;
+           gap: 45px;
+        }
+        .single-counter-items{
+            .icon{
+                width: 100px;
+                height: 100px;
+                line-height: 100px;
+                background-color: $theme-color;
+                text-align: center;
+                @include breakpoint(max-md){
+                   margin: 0 auto;
+                }
+            }
+            .content{
+                margin-top: 30px;
+                @include breakpoint(max-md){
+                    text-align: center;
+                }
+                h2,span{
+                    font-size: 65px;
+                    color: $white;
+                    @include breakpoint(max-xxxl){
+                        font-size: 58px;
+                    }
+                    @include breakpoint(max-xl){
+                        font-size: 48px;
+                    }
+                    @include breakpoint(max-lg){
+                        font-size: 42px;
+                    }
+                    @include breakpoint(max-sm){
+                        font-size: 32px;
+                    }
+                }
+                h6{
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.solar-counter-wrapper {
+    @include flex;
+    justify-content: space-between;
+    gap: 30px;
+    @include breakpoint(max-xl){
+        flex-wrap: wrap;
+    }
+    .solar-counter-items {
+        position: relative;
+        .number {
+            font-size: 160px;
+            font-weight: 700;
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: #6cc355;
+            color: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            line-height: 75px;
+            @include breakpoint(max-lg){
+                display: none
+            }
+        }
+        .counter-content {
+            @include flex;
+            gap: 15px;
+            position: relative;
+            margin-left: 50px;
+            h2 {
+                font-size: 60px;
+                color: $white;
+            }
+            p {
+                color: $white;
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+        }
+    }
+}
+//>>>>> Counter Section End <<<<<//

@@ -1,0 +1,130 @@
+<div class="posts-container" (click)="closeMenus()">
+  <!-- Post Form Component -->
+  <app-post-form *ngIf="authService.isAuthenticated()"></app-post-form>
+
+  <!-- Error message -->
+  <div class="error-message" *ngIf="error">
+    <div class="alert alert-danger">
+      <i class="fas fa-exclamation-circle"></i> {{ error }}
+    </div>
+  </div>
+
+  <!-- Posts Feed -->
+  <div class="posts-feed">
+    <div *ngFor="let post of posts" class="post-card">
+      <div class="post-header">
+        <div class="user-info">
+          <img [src]="post.author_avatar || 'profile-avatar.png'" alt="User avatar" class="user-avatar">
+          <div class="post-meta">
+            <div class="author-name">{{ '@' + post.author_name }}</div>
+            <div class="post-time">{{ post.created_at | date:'shortTime' }} · {{ post.created_at | date:'MMM d' }}</div>
+          </div>
+        </div>
+        <!-- Post actions menu for post author -->
+        <div class="post-actions" *ngIf="isPostAuthor(post)" (click)="$event.stopPropagation()">
+          <button class="actions-toggle" (click)="toggleActionsMenu(post.id)">
+            <i class="fas fa-ellipsis-h"></i>
+          </button>
+          <div class="actions-menu" *ngIf="showActionsMenu === post.id">
+            <button class="action-item" (click)="editPost(post.id)">
+              <i class="far fa-edit"></i> Edit
+            </button>
+            <button class="action-item delete" (click)="deletePost(post.id)" [disabled]="isDeleting[post.id]">
+              <i class="far fa-trash-alt"></i>
+              {{ isDeleting[post.id] ? 'Deleting...' : 'Delete' }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-content">
+        <p>{{ post.content }}</p>
+      </div>
+
+      <div class="post-attachments" *ngIf="post.files && post.files.length > 0">
+        <div class="attachment-grid" [ngClass]="{'single': post.files.length === 1, 'double': post.files.length === 2, 'multiple': post.files.length > 2}">
+          <div class="attachment-item" *ngFor="let file of post.files | slice:0:4; let i = index">
+            <img *ngIf="checkFileType(file.url) === 'image'" [src]="file.url || ''" [alt]="file.file_name || 'Attachment'">
+            <div class="file-icon" *ngIf="checkFileType(file.url) !== 'image'">
+              <i class="far fa-file-alt"></i>
+              <span>{{ file.file_name || '' }}</span>
+            </div>
+            <div class="more-files" *ngIf="i === 3 && post.files.length > 4">
+              +{{ post.files.length - 4 }} more
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-stats">
+        <div class="stat-item likes">
+          <i class="far fa-heart"></i>
+          <span>{{ post.likes_count || 0 }}</span>
+        </div>
+        <div class="stat-item comments">
+          <i class="far fa-comment"></i>
+          <span>{{ post.comments_count || 0 }}</span>
+        </div>
+        <div class="stat-item share">
+          <i class="far fa-share-square"></i>
+          <span>Share</span>
+        </div>
+      </div>
+
+      <!-- Comments Section -->
+      <div class="comments-section" *ngIf="post.comments && post.comments.length > 0">
+        <div class="comment" *ngFor="let comment of post.comments | slice:0:2">
+          <img [src]="comment.author_avatar || 'profile-avatar.png'" alt="User avatar" class="comment-avatar">
+          <div class="comment-content">
+            <div class="comment-author">{{ comment.author_name }}</div>
+            <div class="comment-text">{{ comment.content }}</div>
+            <div class="comment-actions">
+              <span class="comment-time">{{ comment.created_at | date:'shortTime' }}</span>
+              <span class="action-link">Like</span>
+              <span class="action-link">Reply</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="view-more-comments" *ngIf="post.comments_count > 2">
+          <a [routerLink]="['/posts', post.id]">See {{ post.comments_count }} comments</a>
+        </div>
+      </div>
+
+      <!-- Comment Form -->
+      <div class="comment-form" *ngIf="authService.isAuthenticated()">
+        <img [src]="userAvatar || 'profile-avatar.png'" alt="User avatar" class="comment-avatar">
+        <input
+          type="text"
+          placeholder="Type your comment"
+          [formControl]="commentControls[post.id]"
+          (keyup.enter)="addComment(post.id)"
+        >
+        <button type="button" class="emoji-btn" (click)="toggleCommentEmojiPicker(post.id); $event.stopPropagation()">
+          <i class="far fa-smile"></i>
+        </button>
+
+        <div class="emoji-picker" *ngIf="showCommentEmojiPicker === post.id" (click)="$event.stopPropagation()">
+          <div class="emoji-list">
+            <span *ngFor="let emoji of commonEmojis" (click)="addCommentEmoji(post.id, emoji)">{{ emoji }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading-indicator" *ngIf="isLoading">
+    <div class="spinner"></div>
+  </div>
+
+  <div class="no-posts" *ngIf="posts.length === 0 && !isLoading">
+    No posts yet. Be the first to share something!
+  </div>
+</div>
+
+<!-- Edit Post Popup -->
+<app-edit-post-popup
+  [(visible)]="showEditPostPopup"
+  [postId]="editPostId"
+  (postUpdated)="onPostUpdated($event)">
+</app-edit-post-popup>

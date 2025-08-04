@@ -1,0 +1,451 @@
+@use "variables" as *;
+@use "mixins" as *;
+//>>>>> Component Button Here <<<<<//
+.theme-btn{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none !important;
+	background-color: $theme-color;
+    color: $white;
+    font-size: 16px;
+    font-weight: 700;
+	padding: 18px 50px;
+    transition: all 0.5s linear;
+    overflow: hidden;
+    z-index: 99;
+
+    &::before{
+        position: absolute;
+        content: '';
+        background-color: $button-color;
+        width: 120%;
+        height: 0;
+        padding-bottom: 120%;
+        top: -110%;
+        left: -10%;
+        border-radius: 50%;
+        transform: translate3d(0, 68%, 0) scale3d(0, 0, 0);
+        z-index: -1;
+    }
+
+    &::after{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: '';
+        background-color: $button-color;
+        transform: translate3d(0, -100%, 0);
+        transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+        z-index: -1;
+    }
+
+    &:hover{
+		color: $white;
+        &::before{
+            transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+            transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+        }
+        &::after{
+            transform: translate3d(0, 0, 0);
+            transition-duration: 0.05s;
+            transition-delay: 0.4s;
+            transition-timing-function: linear;
+        }
+    }
+
+    @include breakpoint(max-lg){
+        font-size: 15px;
+        padding: 18px 35px;
+    }
+
+    @include breakpoint(max-sm){
+        font-size: 14px;
+        padding: 12px 32px;
+    }
+
+    &.border-white {
+        border: 2px solid $white;
+
+        &::before,&::after{
+            background-color: $white;
+            color: red;
+        }
+
+        &:hover {
+            color: $header-color;
+        }
+
+    }
+
+    &.header-btn-2 {
+        border: 2px solid $white;
+        background: transparent;
+        &::before,&::after {
+            background-color: $white;
+        }
+        &:hover {
+           color: $header-color;
+        }
+    }
+
+    &.bg-style-2{
+        background-color: $button-color;
+        color: $white;
+        &::before{
+            background-color: $theme-color;
+        }
+        &::after{
+            background-color: $theme-color;
+        }
+    }
+
+    &.bg-style-3{
+        background-color: $white;
+        color: $header-color ;
+        &::before{
+            background-color: $header-color;
+        }
+        &::after{
+            background-color: $header-color;
+        }
+        &:hover{
+            color: $white;
+        }
+    }
+
+    &.bg-style-4{
+        background-color: $button-color;
+        color: $white;
+        &::before{
+            background-color: $theme-color-2;
+        }
+        &::after{
+            background-color: $theme-color-2;
+        }
+    }
+
+    &.bg-style-5{
+        background-color: $white;
+        color: $header-color;
+        &::before{
+            background-color: $header-color;
+        }
+        &::after{
+            background-color: $header-color;
+        }
+        &:hover{
+            color: $white;
+        }
+    }
+
+    &.theme-btn-style-2{
+        background-color: transparent;
+        border: 1px solid $theme-color-2;
+        color: $theme-color-2;
+        &::before{
+            background-color: $theme-color-2;
+        }
+        &::after{
+            background-color: $theme-color-2;
+        }
+        &:hover{
+            color: $white;
+        }
+    }
+
+    &.hover-white{
+        background-color: $theme-color-2;
+        &::before{
+            background-color: $white;
+        }
+        &::after{
+            background-color: $white;
+        }
+        &:hover{
+            color: $header-color;
+        }
+    }
+
+    &.header-btn {
+        border: 2px solid $white;
+
+        &::before,&::after {
+        background-color: $white;
+        }
+
+        &:hover {
+            color: $header-color;
+        }
+    }
+
+}
+
+.theme-btn-2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: $header-color;
+    display: inline-block;
+    text-transform: capitalize;
+    i{
+        font-size: 16px;
+        font-weight: 400;
+        color: $header-color ;
+        margin-left: 7px;
+        @include transition;
+    }
+    &:hover{
+        color: $theme-color;
+        i{
+            color: $theme-color;
+        }
+    }
+
+    &.color-style-2 {
+        @include transition;
+        &:hover{
+            text-decoration: underline;
+            color: $theme-color-2;
+            i{
+                color: $theme-color-2;
+            }
+        }
+    }
+
+    &.color-style-3 {
+        @include transition;
+        color: $white;
+            i{
+                color: $white;
+            }
+        &:hover{
+            color: $white;
+            i{
+                color: $white;
+            }
+        }
+    }
+
+    &.color-style-4{
+        color: $theme-color-3;
+        i{
+            color: $theme-color-3;
+        }
+    }
+
+    &.solar-color {
+        color: $theme-color-4;
+        i {
+            color: $theme-color-4;
+        }
+        &:hover{
+            color: $theme-color-5;
+            i {
+                color: $theme-color-5;
+            }
+        }
+    }
+}
+
+.theme-btn-3 {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none !important;
+	background-color: $theme-color-3;
+    color: $white;
+    font-size: 16px;
+    font-weight: 700;
+	padding: 18px 50px;
+    transition: all 0.5s linear;
+    overflow: hidden;
+    z-index: 99;
+    border-radius: 10px;
+    &::before{
+        position: absolute;
+        content: '';
+        background-color: $button-color-2;
+        width: 120%;
+        height: 0;
+        padding-bottom: 120%;
+        top: -110%;
+        left: -10%;
+        border-radius: 50%;
+        transform: translate3d(0, 68%, 0) scale3d(0, 0, 0);
+        z-index: -1;
+    }
+
+    &::after{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: '';
+        background-color: $button-color-2;
+        transform: translate3d(0, -100%, 0);
+        transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+        z-index: -1;
+    }
+
+    &:hover{
+		color: $white;
+        &::before{
+            transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+            transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+        }
+        &::after{
+            transform: translate3d(0, 0, 0);
+            transition-duration: 0.05s;
+            transition-delay: 0.4s;
+            transition-timing-function: linear;
+        }
+    }
+
+    &.hover-white {
+        &::before,&::after {
+            background-color: $white;
+        }
+
+        &:hover {
+            color: $header-color;
+        }
+    }
+
+    @include breakpoint(max-lg){
+        font-size: 15px;
+        padding: 18px 35px;
+    }
+
+    @include breakpoint(max-sm){
+        font-size: 14px;
+        padding: 14px 32px;
+    }
+}
+
+.theme-btn-4 {
+    display: inline-block;
+    vertical-align: middle;
+    background-color: $theme-color-5;
+    color: $white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 15px 12px 30px;
+    @include transition;
+    text-transform: capitalize;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 100px;
+    @include breakpoint(max-sm){
+        padding: 10px 10px 10px 20px;
+        font-size: 14px;
+    }
+    span{
+        position: relative;
+        color: $white;
+        z-index: 999;
+        margin-right: 25px;
+        @include breakpoint(max-sm){
+            margin-right: 15px;
+        }
+    }
+    i{
+        position: relative;
+        color: $header-color;
+        z-index: 999;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        background-color: $white;
+        border-radius: 50%;
+    }
+
+    &::before{
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 150%;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        background-color: $theme-color-5;
+        transition: 700ms cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    }
+    &::after{
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150%;
+        height: 150%;
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+        background-color: $theme-color-4;
+        transition-duration: 700ms;
+        transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    }
+    &:hover{
+        background-color: $theme-color-4;
+        color: $white;
+        &::before{
+            top: 100%;
+        }
+        &::after{
+            bottom: -50%;
+        }
+    }
+
+    &.bg-color-2 {
+        background-color: $theme-color-4;
+        color: $white;
+        &::before{
+            background-color: $theme-color-4;
+        }
+        &::after{
+            background-color: $theme-color-5;
+        }
+        &:hover{
+            background-color: $theme-color-5;
+            color: $white;
+            &::before{
+                top: 100%;
+            }
+            &::after{
+                bottom: -50%;
+            }
+        }
+    }
+
+    &.bg-white {
+        background-color: transparent;
+        border: 2px solid #f3f3f3;
+        @include transition;
+        span {
+            color: $header-color;
+            @include transition;
+        }
+        i {
+            background-color: #f3f3f3;
+            @include transition;
+        }
+        &:hover {
+            span {
+                color: $white;
+            }
+            i {
+                color: $header-color;
+                background-color: $white;
+            }
+        }
+    }
+}
+//>>>>> Component Button End <<<<<//

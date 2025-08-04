@@ -1,0 +1,132 @@
+<div class="post-card" (click)="navigateToPost()">
+  <!-- Loading Indicator -->
+  <div class="loading-overlay" *ngIf="loading">
+    <div class="spinner-container">
+      <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
+    </div>
+  </div>
+
+  <!-- Post Header -->
+  <div class="post-card-header">
+    <div class="user-avatar" (click)="navigateToUserProfile(post.user.id, $event)">
+      <img [src]="post.user.avatar || 'assets/images/default-avatar.png'" alt="Avatar">
+    </div>
+    <div class="post-meta">
+      <div class="user-name" (click)="navigateToUserProfile(post.user.id, $event)">
+        {{ post.user.name }}
+        <span class="username">@{{ post.user.username }}</span>
+        <span *ngIf="post.user.is_verified" class="verified-badge">
+          <mat-icon>verified</mat-icon>
+        </span>
+      </div>
+      <div class="post-time">{{ formatDate(post.created_at) }}</div>
+    </div>
+
+    <!-- Action Menu -->
+    <div class="post-menu" (click)="$event.stopPropagation()">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngIf="currentUser?.id === post.user.id" (click)="openEditDialog()">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item *ngIf="currentUser?.id === post.user.id" (click)="deletePost()">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+        <button mat-menu-item *ngIf="currentUser?.id !== post.user.id" (click)="reportPost()">
+          <mat-icon>flag</mat-icon>
+          <span>Report</span>
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+
+  <!-- Post Content -->
+  <div class="post-content">
+    <!-- Text Content -->
+    <div class="post-text" [innerHTML]="post.content | safeHtml"></div>
+
+    <!-- Attachments -->
+    <div class="post-attachments" *ngIf="post.attachments && post.attachments.length > 0">
+      <div [class]="'attachment-grid ' + getAttachmentGridClass(post.attachments)">
+        <div *ngFor="let file of post.attachments"
+             class="attachment-item"
+             (click)="openAttachment(file, $event)">
+          <div *ngIf="isImage(file)" class="image-attachment">
+            <img [src]="getFileUrl(file)" [alt]="getFileName(file)">
+          </div>
+          <div *ngIf="!isImage(file)" class="file-attachment">
+            <mat-icon>{{ getFileIcon(file) }}</mat-icon>
+            <span class="file-name">{{ getFileName(file) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Post Stats -->
+  <div class="post-stats">
+    <div class="stat-item">
+      <span class="count">{{ post.replies_count || 0 }}</span> replies
+    </div>
+    <div class="stat-item">
+      <span class="count">{{ post.likes_count || 0 }}</span> likes
+    </div>
+    <div class="stat-item">
+      <span class="count">{{ post.views_count || 0 }}</span> views
+    </div>
+  </div>
+
+  <!-- Post Actions -->
+  <div class="post-actions" (click)="$event.stopPropagation()">
+    <button mat-icon-button class="action-button reply-button" (click)="toggleReplies()" [disabled]="loading">
+      <mat-icon>chat_bubble_outline</mat-icon>
+    </button>
+
+    <button mat-icon-button class="action-button like-button"
+            [class.liked]="post.liked"
+            (click)="toggleLike()"
+            [disabled]="loading">
+      <mat-icon>{{ post.liked ? 'favorite' : 'favorite_border' }}</mat-icon>
+    </button>
+
+    <button mat-icon-button class="action-button bookmark-button"
+            [class.bookmarked]="post.bookmarked"
+            (click)="toggleBookmark()"
+            [disabled]="loading">
+      <mat-icon>{{ post.bookmarked ? 'bookmark' : 'bookmark_border' }}</mat-icon>
+    </button>
+
+    <button mat-icon-button class="action-button share-button" (click)="sharePost()" [disabled]="loading">
+      <mat-icon>share</mat-icon>
+    </button>
+  </div>
+
+  <!-- Replies Section -->
+  <div class="replies-section" *ngIf="showReplies && hasMoreReplies">
+    <!-- Toggle Replies Button -->
+    <div class="toggle-replies" (click)="toggleReplies(); $event.stopPropagation()">
+      <button mat-button color="primary">
+        {{ repliesVisible ? 'Hide replies' : 'Show replies' }}
+        <mat-icon>{{ repliesVisible ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </button>
+    </div>
+
+    <!-- Replies List -->
+    <div class="replies-container" *ngIf="repliesVisible">
+      <div class="reply-list">
+        <app-reply *ngFor="let reply of replies" [reply]="reply"></app-reply>
+      </div>
+
+      <!-- Load More Button -->
+      <div class="load-more" *ngIf="hasMoreReplies">
+        <button mat-button color="primary" (click)="loadReplies(); $event.stopPropagation()" [disabled]="loading">
+          {{ loading ? 'Loading...' : 'Load more replies' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

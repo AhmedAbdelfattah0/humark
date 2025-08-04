@@ -1,0 +1,72 @@
+
+:root {
+    --body: #fff;
+    --white: #fff;
+    --theme: #275313;
+    --theme2: #002FF5;
+    --theme3: #00A9A4;
+    --theme4: #57b33e;
+    --theme5: #ff7029;
+    --header: #1C2539;
+    --base: #DF0A0A;
+    --text: #5D666F;
+    --text2: #FFFFFFA3;
+    --it-text: #FFFFFF8C;
+    --border: #1D20271A;
+    --border2: #353535;
+    --button: #1C2539;
+    --button2: #030734;
+    --ratting: #FF9F0D;
+    --bg: #1D2027;
+    --bg2: #DF0A0A0D;
+    --bg3: #191919;
+    --bg4: #F2F4FE;
+    --bg5: #EDF9F9;
+    --bg6: #030734;
+    --bg7: #f8f8f8;
+    --bg8: #232323;
+    --it-item: #252525;
+}
+
+// Theme Color - Defualt Colors
+$white: var(--white);
+$theme-color: var(--theme);
+$theme-color-2: var(--theme2);
+$theme-color-3: var(--theme3);
+$theme-color-4: var(--theme4);
+$theme-color-5: var(--theme5);
+$text-color: var(--text);
+$text-color-2: var(--it-text);
+$text-color-3: var(--text2);
+$ratting-color: var(--ratting);
+$header-color: var(--header);
+$border-color: var(--border);
+$border-color-2: var(--border2);
+$button-color: var(--button);
+$button-color-2: var(--button2);
+$bg-color: var(--bg);
+$bg-color-2: var(--bg2);
+$bg-color-3: var(--bg3);
+$bg-color-3: var(--bg3);
+$bg-color-4: var(--bg4);
+$bg-color-5: var(--bg5);
+$bg-color-6: var(--bg6);
+$bg-color-7: var(--bg7);
+$bg-color-8: var(--bg8);
+$it-item-color: var(--it-item);
+
+
+// Breakpoints
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// Spacing
+$base-spacing: 1rem;
+$spacing-multipliers: (0, 0.5, 1, 1.5, 2, 3, 4, 5, 6);
+$transition-base: all 0.3s ease;

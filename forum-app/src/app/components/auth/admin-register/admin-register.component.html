@@ -1,0 +1,368 @@
+<div class="auth-container">
+  <div class="auth-background">
+    <div class="sub-container">
+      <div class="logo">
+        <img src="HUMARK-LOGO.svg" alt="ELBOD2i" />
+      </div>
+    </div>
+  </div>
+  <div class="auth-content">
+    <div class="auth-form">
+      <h2>Admin Registration</h2>
+      <p class="subtitle" *ngIf="currentStep === 1">
+        Create your admin account
+      </p>
+      <p class="subtitle" *ngIf="currentStep === 2">
+        Set up your tenant organization
+      </p>
+      <p class="subtitle" *ngIf="currentStep === 3">
+        Review and confirm your information
+      </p>
+
+      <!-- Step Indicator -->
+      <div class="step-indicator">
+        <div
+          class="step"
+          [class.active]="currentStep >= 1"
+          [class.completed]="currentStep > 1"
+        >
+          <div class="step-number">1</div>
+          <div class="step-label">Admin Details</div>
+        </div>
+        <div class="step-line" [class.active]="currentStep > 1"></div>
+        <div
+          class="step"
+          [class.active]="currentStep >= 2"
+          [class.completed]="currentStep > 2"
+        >
+          <div class="step-number">2</div>
+          <div class="step-label">Tenant Details</div>
+        </div>
+        <div class="step-line" [class.active]="currentStep > 2"></div>
+        <div class="step" [class.active]="currentStep === 3">
+          <div class="step-number">3</div>
+          <div class="step-label">Review & Create</div>
+        </div>
+      </div>
+
+      <!-- Step 1: Admin Information -->
+      <form [formGroup]="adminForm" *ngIf="currentStep === 1">
+        <div class="form-group">
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <i class="far fa-user"></i>
+            </span>
+            <input
+              type="text"
+              formControlName="name"
+              placeholder="Your Name"
+              [class.is-invalid]="name?.invalid && name?.touched"
+            />
+          </div>
+          <div class="error-text" *ngIf="name?.invalid && name?.touched">
+            <div *ngIf="name?.errors?.['required']">Name is required</div>
+            <div *ngIf="name?.errors?.['minlength']">
+              Name must be at least 3 characters
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <i class="far fa-envelope"></i>
+            </span>
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="Email"
+              [class.is-invalid]="email?.invalid && email?.touched"
+            />
+          </div>
+          <div class="error-text" *ngIf="email?.invalid && email?.touched">
+            <div *ngIf="email?.errors?.['required']">Email is required</div>
+            <div *ngIf="email?.errors?.['email']">
+              Please enter a valid email address
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <i class="fas fa-lock"></i>
+            </span>
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              formControlName="password"
+              placeholder="Password"
+              [class.is-invalid]="password?.invalid && password?.touched"
+            />
+            <span class="password-toggle" (click)="showPassword = !showPassword">
+              <i
+                class="fas"
+                [class.fa-eye]="!showPassword"
+                [class.fa-eye-slash]="showPassword"
+              ></i>
+            </span>
+          </div>
+          <div
+            class="error-text"
+            *ngIf="password?.invalid && password?.touched"
+          >
+            <div *ngIf="password?.errors?.['required']">
+              Password is required
+            </div>
+            <div
+              *ngIf="password?.errors?.['minlength'] || password?.errors?.['pattern']"
+            >
+              Password must:
+              <ul>
+                <li>Be at least 8 characters long</li>
+                <li>Include uppercase and lowercase letters</li>
+                <li>Include at least one number</li>
+                <li>Include at least one special character</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <i class="fas fa-lock"></i>
+            </span>
+            <input
+              [type]="showPasswordConfirm ? 'text' : 'password'"
+              formControlName="confirmPassword"
+              placeholder="Confirm Password"
+              [class.is-invalid]="confirmPassword?.invalid && confirmPassword?.touched || adminForm.errors?.['mismatch']"
+            />
+            <span class="password-toggle" (click)="showPasswordConfirm = !showPasswordConfirm">
+              <i
+                class="fas"
+                [class.fa-eye]="!showPasswordConfirm"
+                [class.fa-eye-slash]="showPasswordConfirm"
+              ></i>
+            </span>
+          </div>
+          <div
+            class="error-text"
+            *ngIf="confirmPassword?.invalid && confirmPassword?.touched"
+          >
+            <div *ngIf="confirmPassword?.errors?.['required']">
+              Please confirm your password
+            </div>
+          </div>
+          <div
+            class="error-text"
+            *ngIf="adminForm.errors?.['mismatch'] && confirmPassword?.touched"
+          >
+            Passwords do not match
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <button
+            type="button"
+            class="next-button"
+            (click)="nextStep()"
+            [disabled]="adminForm.invalid"
+          >
+            NEXT <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </form>
+
+      <!-- Step 2: Tenant Information -->
+      <form [formGroup]="tenantForm" *ngIf="currentStep === 2">
+        <div class="form-group">
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <i class="fas fa-building"></i>
+            </span>
+            <input
+              type="text"
+              formControlName="tenantName"
+              placeholder="Organization Name"
+              [class.is-invalid]="tenantName?.invalid && tenantName?.touched"
+            />
+          </div>
+          <div
+            class="error-text"
+            *ngIf="tenantName?.invalid && tenantName?.touched"
+          >
+            <div *ngIf="tenantName?.errors?.['required']">
+              Organization name is required
+            </div>
+            <div *ngIf="tenantName?.errors?.['minlength']">
+              Organization name must be at least 3 characters
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-wrapper">
+            <span class="input-icon">
+              <i class="fas fa-globe"></i>
+            </span>
+            <input
+              type="text"
+              formControlName="tenantDomain"
+              placeholder="Domain (example.com)"
+              [class.is-invalid]="
+                tenantDomain?.invalid && tenantDomain?.touched
+              "
+            />
+          </div>
+          <div
+            class="error-text"
+            *ngIf="tenantDomain?.invalid && tenantDomain?.touched"
+          >
+            <div *ngIf="tenantDomain?.errors?.['required']">
+              Domain is required
+            </div>
+            <div *ngIf="tenantDomain?.errors?.['pattern']">
+              Please enter a valid domain (e.g., example.com)
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-wrapper textarea-wrapper">
+            <span class="input-icon">
+              <i class="fas fa-image"></i>
+            </span>
+            <div class="file-upload-container">
+              <input
+                type="file"
+                #fileInput
+                (change)="onFileSelected($event)"
+                accept="image/*"
+                class="file-input"
+              />
+              <div class="file-upload-box" (click)="fileInput.click()">
+                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                <span class="upload-text" *ngIf="!selectedFileName">
+                  Drop company logo here or click to upload
+                </span>
+                <span class="file-name" *ngIf="selectedFileName">
+                  {{selectedFileName}}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group terms-group">
+          <div class="checkbox-wrapper">
+            <input
+              type="checkbox"
+              id="termsAccepted"
+              formControlName="termsAccepted"
+            />
+            <label for="termsAccepted"
+              >I accept the
+              <a href="/terms" target="_blank">Terms and Conditions</a></label
+            >
+          </div>
+          <div
+            class="error-text"
+            *ngIf="termsAccepted?.invalid && termsAccepted?.touched"
+          >
+            You must accept the terms and conditions
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <button type="button" class="back-button" (click)="previousStep()">
+            <i class="fas fa-arrow-left"></i> BACK
+          </button>
+          <button
+            type="button"
+            class="next-button"
+            (click)="nextStep()"
+            [disabled]="tenantForm.invalid"
+          >
+            NEXT <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </form>
+
+      <!-- Step 3: Review Information -->
+      <div class="review-section" *ngIf="currentStep === 3">
+        <div class="review-card">
+          <h3>Administrator Information</h3>
+          <div class="review-item">
+            <span class="review-label">Name:</span>
+            <span class="review-value">{{ adminForm.get("name")?.value }}</span>
+          </div>
+          <div class="review-item">
+            <span class="review-label">Email:</span>
+            <span class="review-value">{{
+              adminForm.get("email")?.value
+            }}</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <h3>Organization Information</h3>
+          <div class="review-item">
+            <span class="review-label">Organization Name:</span>
+            <span class="review-value">{{
+              tenantForm.get("tenantName")?.value
+            }}</span>
+          </div>
+          <div class="review-item">
+            <span class="review-label">Domain:</span>
+            <span class="review-value">{{
+              tenantForm.get("tenantDomain")?.value
+            }}</span>
+          </div>
+          <div class="review-item" *ngIf="selectedFileName">
+            <span class="review-label">Company Logo:</span>
+            <span class="review-value logo-preview">
+              <img *ngIf="logoPreviewUrl" [src]="logoPreviewUrl" alt="Logo Preview">
+              <span *ngIf="!logoPreviewUrl">{{ selectedFileName }}</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="invitation-info">
+          <h3>Invitation Process</h3>
+          <p>
+            Upon creation, you will receive an email confirming your
+            organization setup. You can then:
+          </p>
+          <ul>
+            <li>Access the admin dashboard to manage your organization</li>
+            <li>
+              Send invitation links to users who will join your organization
+            </li>
+            <li>Configure organization settings and access permissions</li>
+          </ul>
+        </div>
+
+        <div class="form-buttons">
+          <button type="button" class="back-button" (click)="previousStep()">
+            <i class="fas fa-arrow-left"></i> BACK
+          </button>
+          <button
+            type="button"
+            class="submit-button"
+            (click)="submitForms()"
+            [disabled]="isLoading"
+          >
+            <span *ngIf="!isLoading">CREATE ORGANIZATION</span>
+            <span *ngIf="isLoading">PROCESSING...</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="auth-links">
+        <span>Already have an account?</span>
+        <a routerLink="/auth/login">Login to your account</a>
+      </div>
+    </div>
+  </div>
+</div>

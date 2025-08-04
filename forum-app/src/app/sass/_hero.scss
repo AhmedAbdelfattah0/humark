@@ -1,0 +1,514 @@
+//--Hero Section Start--//
+@use "variables" as *;
+@use "mixins" as *;
+@use "typography" as *;
+
+.hero-1 {
+    position: relative;
+    .arry-button{
+        position: absolute;
+        top: 50%;
+        right: 19%;
+        transform: translate(-50%,-50%);
+        z-index: 99;
+        display: grid;
+        gap: 15px;
+        @include breakpoint(max-xl){
+            display: none;
+        }
+        .arry-prev{
+            width: 55px;
+            height: 55px;
+            line-height: 50px;
+            border-radius: 50%;
+            background-color: $white;
+            i{
+                font-size: 16px;
+                font-weight: 400;
+                color: #191919;
+            }
+        }
+        .arry-next{
+            width: 55px;
+            height: 55px;
+            line-height: 50px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 1px solid #ffffff33;
+            i{
+                font-size: 16px;
+                font-weight: 400;
+                color: $white;
+            }
+        }
+    }
+    .arrow-shape{
+        position: absolute;
+        bottom: 0;
+        right: 60px;
+        z-index: 99;
+        @include breakpoint(max-xl){
+            display: none;
+        }
+    }
+    .arrow-shape-2{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 9;
+        @include breakpoint(max-xl){
+            display: none;
+        }
+    }
+    .slide-bg{
+        position: relative;
+        padding: 160px 0;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+
+        &::before{
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            height: 100%;
+            content: "";
+            background: #000;
+            z-index: 2;
+            opacity: .6;
+        }
+        @include breakpoint(max-xl){
+            padding: 130px 0;
+        }
+        @include breakpoint(max-lg){
+            padding: 100px 0;
+        }
+        @include breakpoint(max-md){
+            padding: 80px 0;
+        }
+
+        .hero-content{
+            position: relative;
+            z-index: 9;
+            @include breakpoint(max-sm){
+                text-align: center;
+            }
+            h1{
+                color: $white;
+                text-transform: initial;
+                @include breakpoint(max-sm){
+                    font-size: 44px;
+                }
+            }
+            h3{
+                color: $white;
+                margin-top: 20px;
+                display: block;
+                border-left: 3px solid $white;
+                padding-left: 20px;
+                @include breakpoint(max-sm){
+                    padding-left: 0;
+                    border: none;
+                }
+            }
+            .hero-button{
+                margin-top: 50px;
+                @include flex;
+                gap: 50px;
+                @include breakpoint(max-xl){
+                    gap: 30px;
+                }
+                @include breakpoint(max-lg){
+                    flex-wrap: wrap;
+                    margin-top: 40px;
+                }
+                @include breakpoint(max-sm){
+                    justify-content: center;
+                }
+               .video-play-btn{
+                  .play-video{
+                     border-radius: 50%;
+                     width: 90px;
+                     height: 90px;
+                     background-color: $white;
+                     color: $theme-color;
+                     line-height: 90px;
+                     text-align: center;
+                     display: inline-block;
+                     margin: 0px auto;
+                     font-size: 18px;
+                     @include breakpoint(max-lg){
+                        width: 80px;
+                        height: 80px;
+                        line-height: 80px;
+                    }
+                    @include breakpoint(max-sm){
+                        width: 70px;
+                        height: 70px;
+                        line-height: 70px;
+                    }
+                  }
+                  span{
+                    font-size: 18px;
+                    color: $white;
+                    font-weight: 700;
+                    text-decoration-line: underline;
+                    @include breakpoint(max-lg){
+                        font-size: 16px;
+                    }
+                    @include breakpoint(max-sm){
+                        font-size: 14px;
+                    }
+                  }
+               }
+            }
+        }
+    }
+}
+
+.hero-2 {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 250px 0 103px;
+    @include breakpoint(max-xl){
+       padding: 220px 0 140px;
+    }
+    @include breakpoint(max-lg){
+       padding: 200px 0 100px;
+    }
+    .circle-shape{
+        position: absolute;
+        right: 10%;
+        top: 38%;
+        animation: rotate 15s linear infinite;
+        @include breakpoint(max-xl){
+            display: none;
+        }
+    }
+    .hero-content{
+        position: relative;
+        @include breakpoint(max-sm){
+           text-align: center;
+           margin: 0 auto;
+        }
+        .head-title{
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.00) 100%);
+            width: 285px;
+            padding: 15px 15px;
+            color: $white;
+            margin-bottom: 30px;
+            @include breakpoint(max-sm){
+                text-align: center;
+                margin: 0 auto 30px;
+            }
+        }
+        h1{
+            color: $white;
+            margin-bottom: 25px;
+            text-transform: initial;
+        }
+        h6{
+            color: $white;
+        }
+        .hero-button{
+            margin-top: 40px;
+            @include flex;
+            gap: 30px;
+            @include breakpoint(max-sm){
+                justify-content: center;
+                gap: 15px;
+            }
+            .theme-btn-2{
+                color: $white;
+                text-decoration: underline;
+                i{
+                    color: $white;
+                }
+                &:hover{
+                    color: $theme-color-2;
+                    i{
+                        color: $theme-color-2;
+                    }
+                }
+            }
+        }
+    }
+    .hero-image{
+        margin-left: 30px;
+        position: relative;
+        z-index: 9;
+        @include breakpoint(max-xl){
+            margin-left: 0;
+        }
+        img{
+            @include imgw;
+            border-radius: 20px;
+        }
+    }
+}
+
+.hero-3 {
+    padding: 230px 0 130px;
+    background-color: $bg-color-5;
+    position: relative;
+    @include breakpoint(max-lg){
+        padding: 190px 0 90px;
+        overflow: hidden;
+    }
+    @include breakpoint(max-sm){
+        padding: 130px 0 65px;
+    }
+    .bar-shape {
+        position: absolute;
+        top: 53%;
+        left: 26%;
+        animation: width 8s linear infinite;
+        overflow: hidden;
+        @include breakpoint(max-xxl){
+           top: 50%;
+           left: 20%;
+        }
+        @include breakpoint(max-xl){
+            display: none;
+        }
+    }
+
+    .star-shape {
+        position: absolute;
+        left: 55%;
+        top: 30%;
+        @include breakpoint(max-lg){
+            display: none;
+        }
+    }
+
+    .line-shape {
+        position: absolute;
+        left: 45%;
+        bottom: 5%;
+        animation: tpswing 1s forwards infinite alternate;
+        @include breakpoint(max-lg){
+            display: none;
+        }
+    }
+
+    .hero-content{
+        @include breakpoint(max-sm){
+            text-align: center;
+        }
+        h1{
+           font-family:  $heading-font-2;
+           margin-bottom: 30px;
+           @include breakpoint(max-sm){
+            margin-bottom: 15px;
+           }
+        }
+
+        .hero-button{
+            margin-top: 40px;
+            @include flex;
+            gap: 50px;
+            @include breakpoint(max-xl){
+                gap: 30px;
+            }
+            @include breakpoint(max-lg){
+                flex-wrap: wrap;
+                margin-top: 40px;
+            }
+            @include breakpoint(max-sm){
+                justify-content: center;
+                margin-top: 30px;
+            }
+           .video-play-btn{
+              .play-video{
+                 border-radius: 50%;
+                 width: 80px;
+                 height: 80px;
+                 background-color: $theme-color-3;
+                 color: $white;
+                 line-height: 80px;
+                 text-align: center;
+                 display: inline-block;
+                 margin: 0px auto;
+                 font-size: 18px;
+                 @include breakpoint(max-lg){
+                    width: 70px;
+                    height: 70px;
+                    line-height: 70px;
+                }
+                @include breakpoint(max-sm){
+                    width: 60px;
+                    height: 60px;
+                    line-height: 60px;
+                }
+              }
+              span{
+                color: $header-color;
+                font-weight: 800;
+                @include breakpoint(max-sm){
+                    font-size: 14px;
+                }
+              }
+           }
+        }
+
+        .client-item{
+            margin-top: 40px;
+            gap: 15px;
+            @include breakpoint(max-sm){
+               margin-top: 30px;
+               justify-content: center;
+            }
+            p{
+                font-weight: 700;
+                color: $header-color;
+                text-transform: capitalize;
+            }
+        }
+    }
+
+    .hero-card-image{
+        img{
+            @include imgw;
+        }
+    }
+}
+
+.hero-4 {
+    .solar-bg {
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        padding: 200px 0 200px;
+        position: relative;
+         @include breakpoint(max-lg){
+            padding: 100px 0 200px;
+            overflow: hidden;
+        }
+        @include breakpoint(max-sm){
+            padding: 70px 0 170px;
+            overflow: hidden;
+        }
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            content: "";
+            background-color: rgb(255, 255, 255);
+            opacity: 0.961;
+
+        }
+    }
+    .solar-shape {
+        position: absolute;
+        bottom: 0;
+        left: 20px;
+    }
+    .hero-content {
+        position: relative;
+        @include breakpoint(max-sm){
+            text-align: center;
+            margin: 0 auto;
+        }
+        .section-both {
+            position: relative;
+            margin-bottom: 20px;
+            @include breakpoint(max-sm){
+                margin-bottom: 10px;
+            }
+            span{
+                margin-left: 50px;
+                color: $theme-color-4;
+                font-weight: 600;
+                @include breakpoint(max-sm){
+                   margin-left: 0;
+                }
+            }
+            &::before {
+                position: absolute;
+                top: -2px;
+                left: 0;
+                content: "";
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                background-color: transparent;
+                border: 2px solid $theme-color-4;
+                @include breakpoint(max-sm){
+                    display: none;
+                }
+            }
+            &::after {
+                position: absolute;
+                top: 8px;
+                left: 10px;
+                content: "";
+                border-radius: 50%;
+                width: 10px;
+                height: 10px;
+                background-color: transparent;
+                border: 2px solid $theme-color-4;
+                @include breakpoint(max-sm){
+                    display: none;
+                }
+            }
+        }
+        h1{
+            font-size: 70px;
+            line-height: 125%;
+            @include breakpoint(max-xl){
+                font-size: 52px;
+            }
+            @include breakpoint(max-lg){
+                font-size: 60px;
+            }
+            @include breakpoint(max-md){
+                font-size: 48px;
+            }
+            @include breakpoint(max-sm){
+                font-size: 36px;
+            }
+        }
+        .hero-button {
+            gap: 30px;
+            margin-top: 50px;
+            @include breakpoint(max-md){
+                margin-top: 30px;
+            }
+            @include breakpoint(max-sm){
+                justify-content: center;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+        }
+    }
+    .solar-image {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 9;
+        max-width: 1100px;
+        @include breakpoint(max-xxxl){
+           max-width: 900px;
+           bottom: 100px;
+        }
+        @include breakpoint(max-xxl){
+            max-width: 750px;
+            bottom: 95px;
+        }
+        @include breakpoint(max-xl){
+            display: none
+        }
+        img {
+            @include imgw;
+        }
+    }
+}
+//--Hero Section End--//

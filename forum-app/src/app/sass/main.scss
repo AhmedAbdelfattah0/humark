@@ -1,0 +1,51 @@
+/*
+Theme Name: Humark
+Author: Modina Theme
+Author URI: https://themeforest.net/user/modinatheme/
+Description: Multi-Purpose Business HTML5 Template
+Version: 1.0.0
+*/
+
+/*CSS Table Of Content Ends Here*/
+
+//>> Basic Start <<//
+
+//>> Mixins <<//
+@forward "_mixins";
+//>> Variables <<//
+@forward "_variables";
+//>> Buttons <<//
+@forward "_buttons";
+//>> Typography <<//
+@forward "_typography";
+//>> Basic End <<//
+
+
+//>> Template Section Style Start <<//
+
+//>> Preloader <<//
+@forward "_preloader";
+//>> Section <<//
+@forward "_section";
+//>> Animation <<//
+@forward "_animation";
+//>> Header <<//
+@forward "_header";
+//>> MeanMenu <<//
+@forward "_meanmenu";
+//>> Banner <<//
+@forward "_hero";
+//>> Feature <<//
+@forward "_feature";
+
+//>> Brand <<//
+@forward "_brand";
+
+@forward "_app";
+
+ //>> Footer <<//
+  @forward "_footer";
+
+ //>> Template Section Style End <<//
+
+

@@ -1,0 +1,34 @@
+<div class="popup-overlay" [class.active]="visible" (click)="closePopup()">
+  <div class="popup-container" (click)="$event.stopPropagation()">
+    <div class="popup-header">
+      <h3>Edit Post</h3>
+      <button type="button" class="close-btn" (click)="closePopup()">×</button>
+    </div>
+
+    <div class="popup-content">
+      <!-- Loading state -->
+      <div class="loading-container" *ngIf="isLoading">
+        <div class="spinner"></div>
+        <p>Loading post details...</p>
+      </div>
+
+      <!-- Error message -->
+      <div class="error-message" *ngIf="error">
+        <div class="alert alert-danger">
+          <i class="fas fa-exclamation-circle"></i>
+          {{ error }}
+        </div>
+      </div>
+
+      <!-- Post Form Component -->
+      <app-post-form
+        *ngIf="!isLoading && postId"
+        [postId]="postId"
+        [isPopup]="true"
+        [existingFiles]="existingFiles"
+        (formSubmitted)="onFormSubmitted($event)"
+        (canceled)="onCanceled()">
+      </app-post-form>
+    </div>
+  </div>
+</div>

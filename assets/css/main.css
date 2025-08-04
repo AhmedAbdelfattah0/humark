@@ -4037,6 +4037,8 @@ header-area.style-2 {
   margin-top: 30px;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
+  height: 600px;
+  max-height: 645px;
 }
 
 @media (max-width: 575px) {

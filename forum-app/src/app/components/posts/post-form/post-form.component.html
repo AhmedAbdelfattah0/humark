@@ -1,0 +1,77 @@
+<div class="post-form-container">
+  <div class="avatar">
+    <img [src]="userAvatar || 'profile-avatar.png'" alt="User avatar">
+  </div>
+  <div class="post-form-content">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+      <div class="input-area">
+        <textarea
+          #contentTextarea
+          formControlName="content"
+          placeholder="Share something"
+          [class.is-invalid]="content!.invalid && content!.touched"
+          rows="3"
+        ></textarea>
+
+        <div class="invalid-feedback" *ngIf="content!.invalid && content!.touched">
+          <div *ngIf="content!.errors?.['required']">Content is required</div>
+        </div>
+
+        <div class="preview-container" *ngIf="filePreviewUrls.length > 0">
+          <div class="preview-item" *ngFor="let preview of filePreviewUrls; let i = index; trackBy: trackByFn">
+            <img *ngIf="isImage(getFileType(existingFiles[i] || uploadedFiles[i - (existingFiles?.length || 0)]))" [src]="preview" alt="File preview">
+            <div *ngIf="!isImage(getFileType(existingFiles[i] || uploadedFiles[i - (existingFiles?.length || 0)]))" class="file-icon">
+              <i class="fas" [ngClass]="getFileIconClass(existingFiles[i] || uploadedFiles[i - (existingFiles?.length || 0)])"></i>
+              <span class="file-name">{{ getFileName(existingFiles[i] || uploadedFiles[i - (existingFiles?.length || 0)]) }}</span>
+            </div>
+            <button type="button" class="remove-btn" (click)="removeFile(i)">×</button>
+          </div>
+          <div class="file-counter" *ngIf="filePreviewUrls.length > 0">
+            {{ filePreviewUrls.length }} file(s) selected
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <div class="upload-options">
+          <button type="button" class="upload-btn" (click)="triggerFileInput()">
+            <i class="far fa-image"></i>
+           </button>
+          <input
+            #fileInput
+            type="file"
+            multiple
+            accept="image/jpeg,image/png,image/gif,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            (change)="onFileSelected($event)"
+            style="display: none;"
+          >
+
+          <button type="button" class="emoji-btn" (click)="toggleEmojiPicker()">
+            <i class="far fa-smile"></i>
+          </button>
+
+          <div class="emoji-picker" *ngIf="showEmojiPicker">
+            <div class="emoji-list">
+              <span *ngFor="let emoji of commonEmojis; trackBy: trackByFn" (click)="addEmoji(emoji)">{{ emoji }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button *ngIf="isPopup" type="button" class="cancel-btn" (click)="cancelForm()">
+            Cancel
+          </button>
+          <button type="submit" class="post-btn" [disabled]="postForm.invalid || isLoading">
+            {{ isLoading ? 'Posting...' : (isEditMode ? 'Update' : 'Post') }}
+          </button>
+        </div>
+      </div>
+
+      <div class="error-message" *ngIf="error">
+        <div class="alert alert-danger">
+          <i class="fas fa-exclamation-circle"></i> {{ error }}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

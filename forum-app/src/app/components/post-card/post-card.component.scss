@@ -1,0 +1,421 @@
+.post-card {
+  background-color: white;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+  border: 1px solid #eff3f4;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .post-card-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+
+    .user-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-right: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #eee;
+
+      mat-icon {
+        font-size: 40px;
+        height: 40px;
+        width: 40px;
+        color: #777;
+      }
+    }
+
+    .post-meta {
+      flex: 1;
+      min-width: 0;
+
+      .user-info {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px;
+
+        .user-name {
+          font-weight: bold;
+          color: #0f1419;
+          font-size: 15px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .user-handle, .post-date {
+          color: #536471;
+          font-size: 14px;
+          white-space: nowrap;
+        }
+
+        .dot-separator {
+          color: #536471;
+          font-size: 14px;
+          margin: 0 2px;
+        }
+      }
+
+      .category-tag {
+        display: inline-block;
+        margin-top: 4px;
+        background-color: #e8f5fd;
+        color: #1d9bf0;
+        font-size: 12px;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-weight: 500;
+      }
+    }
+
+    .more-options-btn {
+      color: #536471;
+      margin-left: 8px;
+    }
+  }
+
+  .post-card-content {
+    margin-bottom: 12px;
+
+    .post-text {
+      color: #0f1419;
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      word-wrap: break-word;
+
+      ::ng-deep a {
+        color: #1d9bf0;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .post-attachments {
+      margin-top: 8px;
+
+      .attachment-grid {
+        display: grid;
+        gap: 2px;
+        border-radius: 16px;
+        overflow: hidden;
+
+        &.grid-1 {
+          grid-template-columns: 1fr;
+        }
+
+        &.grid-2, &.grid-4 {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        &.grid-3 {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .attachment-item {
+          position: relative;
+          overflow: hidden;
+
+          .image-attachment {
+            cursor: pointer;
+            height: 100%;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              min-height: 150px;
+              transition: transform 0.2s ease;
+
+              &:hover {
+                transform: scale(1.02);
+              }
+            }
+          }
+
+          .file-attachment {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f7f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            height: 100%;
+            min-height: 100px;
+
+            &:hover {
+              background-color: #eff3f4;
+            }
+
+            .file-icon {
+              margin-bottom: 8px;
+
+              mat-icon {
+                font-size: 32px;
+                height: 32px;
+                width: 32px;
+                color: #1d9bf0;
+              }
+            }
+
+            .file-name {
+              font-size: 13px;
+              color: #536471;
+              max-width: 100%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .post-card-actions {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px -8px;
+
+    .action-btn {
+      display: flex;
+      align-items: center;
+      color: #536471;
+      padding: 8px;
+
+      mat-icon {
+        font-size: 20px;
+        height: 20px;
+        width: 20px;
+      }
+
+      .action-count {
+        font-size: 13px;
+        margin-left: 4px;
+      }
+
+      &:hover {
+        color: #1d9bf0;
+        background-color: rgba(29, 155, 240, 0.1);
+        border-radius: 50%;
+      }
+
+      &.reply-btn:hover {
+        color: #1d9bf0;
+      }
+
+      &.like-btn {
+        &:hover, &.liked {
+          color: #f91880;
+          background-color: rgba(249, 24, 128, 0.1);
+        }
+      }
+
+      &.share-btn:hover {
+        color: #00ba7c;
+        background-color: rgba(0, 186, 124, 0.1);
+      }
+
+      &.bookmark-btn {
+        &:hover, &.bookmarked {
+          color: #1d9bf0;
+          background-color: rgba(29, 155, 240, 0.1);
+        }
+      }
+    }
+  }
+
+  .post-replies {
+    margin-top: 16px;
+
+    .reply-divider {
+      height: 1px;
+      background-color: #eff3f4;
+      margin: 12px 0;
+    }
+
+    .reply {
+      padding: 12px 0;
+      border-bottom: 1px solid #eff3f4;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .reply-header {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 4px;
+
+        .user-avatar.small {
+          width: 32px;
+          height: 32px;
+          margin-right: 8px;
+
+          mat-icon {
+            font-size: 24px;
+            height: 24px;
+            width: 24px;
+          }
+        }
+
+        .reply-meta {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 4px;
+
+          .user-name {
+            font-weight: bold;
+            font-size: 14px;
+          }
+
+          .user-handle, .reply-date {
+            color: #536471;
+            font-size: 13px;
+          }
+
+          .dot-separator {
+            color: #536471;
+            font-size: 13px;
+            margin: 0 2px;
+          }
+        }
+      }
+
+      .reply-content {
+        padding-left: 40px;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #0f1419;
+        margin-bottom: 8px;
+      }
+
+      .reply-actions {
+        padding-left: 40px;
+
+        .action-btn.small {
+          padding: 4px;
+
+          mat-icon {
+            font-size: 16px;
+            height: 16px;
+            width: 16px;
+          }
+
+          .action-count {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .view-more-replies {
+      margin-top: 8px;
+      text-align: center;
+
+      button {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// Dark mode styles
+:host-context(.dark-theme) {
+  .post-card {
+    background-color: #15202b;
+    border-color: #2f3336;
+
+    .post-card-header {
+      .user-avatar {
+        background-color: #2f3336;
+
+        mat-icon {
+          color: #8899a6;
+        }
+      }
+
+      .post-meta {
+        .user-info {
+          .user-name {
+            color: #ffffff;
+          }
+
+          .user-handle, .post-date, .dot-separator {
+            color: #8899a6;
+          }
+        }
+
+        .category-tag {
+          background-color: rgba(29, 155, 240, 0.15);
+          color: #1d9bf0;
+        }
+      }
+
+      .more-options-btn {
+        color: #8899a6;
+      }
+    }
+
+    .post-card-content {
+      .post-text {
+        color: #ffffff;
+      }
+
+      .post-attachments {
+        .attachment-grid {
+          .attachment-item {
+            .file-attachment {
+              background-color: #1e2732;
+
+              &:hover {
+                background-color: #2c3640;
+              }
+
+              .file-name {
+                color: #8899a6;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .post-card-actions {
+      .action-btn {
+        color: #8899a6;
+      }
+    }
+
+    .post-replies {
+      .reply-divider {
+        background-color: #2f3336;
+      }
+
+      .reply {
+        border-bottom-color: #2f3336;
+
+        .reply-content {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
